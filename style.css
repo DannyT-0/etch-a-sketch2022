@@ -1,0 +1,29 @@
+* {
+	box-sizing: border-box;
+}
+
+#container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+#container > #square {
+	border: 1px solid black;
+	height: 25px;
+	width: 25px;
+}
+
+#container > #square:nth-child(16n + 1) {
+	width: 100%;
+	border: 0;
+	height: 0;
+}
+
+button {
+	margin-left: 45%;
+}
+
+/* #square:hover {
+	background-color: blue;
+} */
