@@ -6,9 +6,9 @@ function randomColor() {
 	return Math.floor(Math.random() * 256);
 }
 
-function resetGrid(items) {
+function resetGrid() {
 	resetButton.addEventListener("click", () => {
-		items.style.backgroundColor = "white";
+		container.textContent = "";
 	});
 }
 
@@ -18,14 +18,6 @@ function gridManipulation(items) {
 	});
 }
 
-for (let i = 0; i < 256; i++) {
-	const square = document.createElement("div");
-	container.appendChild(square);
-	square.setAttribute("id", "square");
-	gridManipulation(square);
-	resetGrid(square);
-}
-
 gridButton.addEventListener("click", () => {
 	let numOfSquares = prompt("Please enter a number between 2-100", 16);
 	if (numOfSquares > 100) {
@@ -33,10 +25,16 @@ gridButton.addEventListener("click", () => {
 			"This is too big of a number! Please press the button again and try a smaller number!"
 		);
 	} else {
-		for (let i = 0; i < numOfSquares * numOfSquares; i++) {
+		container.textContent = "";
+		let sizeOfGrid = numOfSquares * numOfSquares;
+		container.style.gridTemplateColumns = `repeat(${numOfSquares}, 1fr)`;
+		for (let i = 0; i < sizeOfGrid; i++) {
 			const square = document.createElement("div");
 			container.appendChild(square);
 			square.setAttribute("id", "square");
+			// square.style.height = `500px/${numOfSquares}`;
+			// square.style.width = `500px/${numOfSquares}`;
+			square.textContent = i;
 			gridManipulation(square);
 			resetGrid(square);
 		}
